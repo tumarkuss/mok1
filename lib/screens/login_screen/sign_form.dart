@@ -86,7 +86,7 @@ class _SignFormState extends State<SignForm> {
             text: "Продолжить",
             press: () async {
               ///Login Server Function
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainScreen()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MainScreen()));
               
             },
           ),

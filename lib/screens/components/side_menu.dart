@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mok1/components/components.dart';
+import 'package:mok1/screens/courses_screen/courses_screen.dart';
+import 'package:mok1/screens/courses_screen/resources_screen/resources_screen.dart';
+import 'package:mok1/screens/courses_screen/settings_screen.dart';
+import 'package:mok1/screens/home_screen/home_screen.dart';
+import 'package:mok1/screens/login_screen/body.dart';
 import 'package:ternav_icons/ternav_icons.dart';
 
 import '../../constant.dart';
@@ -19,32 +24,47 @@ class SideMenu extends StatelessWidget {
           SizedBox(
             height: 100,
             child: DrawerHeader(
-                child: textLogo(30))
+                child: Image.asset('assets/images/mok_logo_blue.png'))
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.home_2,
             title: "Общее",
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MainScreen()),
+              );
+            },
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.menu,
             title: "Курсы",
-            onTap: () {},
+            onTap: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CoursesScreen()),
+              );
+            },
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.folder,
             title: "Ресурсы",
-            onTap: () {},
-          ),
-          DrawerListTile(
-            icon: TernavIcons.lightOutline.chat,
-            title: "Сообщения",
-            onTap: () {},
+            onTap: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ResourcesScreen()),
+              );
+            },
           ),
           DrawerListTile(
             icon: TernavIcons.lightOutline.settings,
             title: "Настройки",
-            onTap: () {},
+            onTap: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
+              );
+            },
           ),
           const SizedBox(
             height: 10,
@@ -53,11 +73,16 @@ class SideMenu extends StatelessWidget {
             "assets/images/help.png",
             height: 150,
           ),
-          SizedBox(height: 160,),
+          const SizedBox(height: 160,),
           DrawerListTile(
             icon: TernavIcons.lightOutline.logout,
             title: "Выйти",
-            onTap: () {},
+            onTap: () {
+                Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            },
           ),
           const SizedBox(
             height: 10,

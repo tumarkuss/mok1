@@ -1,4 +1,6 @@
 import 'package:mok1/screens/components/chart_container.dart';
+import 'package:mok1/screens/courses_screen/notifications_screen/notifications_screen.dart';
+import 'package:mok1/screens/profile_screen/profile_screen.dart';
 import 'package:mok1/widgets/activity_header.dart';
 import 'package:mok1/widgets/bar_chart.dart';
 import 'package:mok1/widgets/courses_grid.dart';
@@ -23,21 +25,22 @@ class MainScreen extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.grey, size: 28),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search,
-              color: Colors.grey,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const NotificationScreen()));
+            },
             icon: const Icon(
               Icons.notifications,
               color: Colors.grey,
             ),
           ),
            IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()));
+            },
             icon: const Icon(
               Icons.person_2_rounded,
               color: Colors.grey,

@@ -95,6 +95,19 @@ Center textLogo(int fontsize){
   );
 }
 
+AppBar DefaultAppBar(String s){
+  String title = s;
+  return AppBar(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          iconTheme: const IconThemeData(
+                color: Colors.black, //change your color here
+              ),
+              title:  Text(title,style: const TextStyle(fontFamily: 'Montserrat', color: Colors.black,fontSize: 21, fontWeight: FontWeight.w600),),
+              centerTitle: true,
+      );
+}
+
 // void showTopShortToast(
 //   BuildContext context, {
 //   required String message,
