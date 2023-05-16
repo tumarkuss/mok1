@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mok1/data/user_data.dart';
 import 'package:mok1/screens/profile_screen/components/avatar.dart';
+import 'package:mok1/widgets/profile_card.dart';
 
 import '../../components/components.dart';
 import '../../data/data.dart';
@@ -27,7 +28,8 @@ class ProfileScreen extends StatelessWidget {
       
       persistentFooterAlignment: AlignmentDirectional.centerStart,
       appBar: DefaultAppBar('Профиль'),
-      body: Column(
+      body: SingleChildScrollView( 
+        child: Column(
         children:  [
          ProfileImage(),
           const SizedBox(height: 20),
@@ -37,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
           
 
         ],)
-    );
+    ));
   }
   
   Widget ProfileImage() {
@@ -67,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
         height: 100,
         width: 100,
         decoration:  const BoxDecoration(
-              color: Color.fromARGB(255, 221, 221, 221),
+              color: Color.fromARGB(255, 236, 236, 236),
               borderRadius:  BorderRadius.all(
                 Radius.circular(60.0),
                 
@@ -83,15 +85,18 @@ class ProfileScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 40),
            child:Container(
             decoration:  const BoxDecoration(
-              color: Color.fromARGB(255, 221, 221, 221),
+              color: Color.fromARGB(255, 236, 236, 236),
               borderRadius:  BorderRadius.only(
                 topLeft:  Radius.circular(40.0),
                 topRight:  Radius.circular(40.0),
+                bottomLeft:  Radius.circular(40.0),
+                bottomRight:  Radius.circular(40.0),
               )
             ),
          ),
         ),
-      informationColumn()]);
+      informationColumn(),
+      ]);
                     
             
   }
@@ -100,14 +105,17 @@ class ProfileScreen extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        const SizedBox(height: 10,),
         Container(
-          height: 65, margin: const EdgeInsets.only(top: 15) ,child: Image.asset('assets/images/graduation_cap.png', color: Colors.black,)
+          height: 50, margin: const EdgeInsets.only(top: 0) ,child: Image.asset('assets/images/graduation_cap.png',scale: 10, color: Colors.black,)
     ,),
-        informationElement(),
-    ]);
+        profileCardBuilder(),
+        Container(height: 50,color: Colors.white,)
+
+      
+      ]);
   }
-  
-  informationElement() {
-    ///Information Element <-- to be ListView()
-  }
+
+
+
 }
