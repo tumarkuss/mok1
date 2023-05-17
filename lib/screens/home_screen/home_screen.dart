@@ -1,5 +1,5 @@
 import 'package:mok1/screens/components/chart_container.dart';
-import 'package:mok1/screens/courses_screen/notifications_screen/notifications_screen.dart';
+
 import 'package:mok1/screens/profile_screen/profile_screen.dart';
 import 'package:mok1/widgets/activity_header.dart';
 import 'package:mok1/widgets/bar_chart.dart';
@@ -8,6 +8,7 @@ import 'package:mok1/widgets/planing_grid.dart';
 import 'package:mok1/widgets/statistics_grid.dart';
 import 'package:flutter/material.dart';
 
+import '../courses_screen/notifications_screen/notifications_screen.dart';
 import '/constant.dart';
 import '/widgets/planing_header.dart';
 import '../components/side_menu.dart';

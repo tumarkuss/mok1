@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mok1/components/components.dart';
 
+import 'components.dart';
+
 class ResourcesScreen extends StatelessWidget {
   const ResourcesScreen({super.key});
 
@@ -8,7 +10,7 @@ class ResourcesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: DefaultAppBar("Ресурсы"),
-      body: const Center(child: Text("Resources Screen")),
+      body: const ResourcesCardBuilder(),
     );
   }
 }
