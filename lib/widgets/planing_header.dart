@@ -7,11 +7,11 @@ class PlaningHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
-          children: const [
+          children:  [
             Text(
               "Планнер ",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -23,7 +23,7 @@ class PlaningHeader extends StatelessWidget {
           ],
         ),
         Row(
-          children: const [
+          children:  [
             Icon(
               Icons.calendar_month_outlined,
               color: Colors.grey,

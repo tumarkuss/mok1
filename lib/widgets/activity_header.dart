@@ -7,15 +7,15 @@ class ActivityHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
+        Text(
           "Активность",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         Row(
-          children: const [
+          children: [
             Text(
               "День",
               style: TextStyle(color: Colors.grey),

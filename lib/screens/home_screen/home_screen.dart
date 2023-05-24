@@ -8,7 +8,7 @@ import 'package:mok1/widgets/planing_grid.dart';
 import 'package:mok1/widgets/statistics_grid.dart';
 import 'package:flutter/material.dart';
 
-import '../courses_screen/notifications_screen/notifications_screen.dart';
+import '../notifications_screen/notifications_screen.dart';
 import '/constant.dart';
 import '/widgets/planing_header.dart';
 import '../components/side_menu.dart';
@@ -84,9 +84,9 @@ class MainScreen extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     "Мои Курсы",
                     style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),

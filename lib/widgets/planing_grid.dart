@@ -6,7 +6,6 @@ class PlaningGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return GridView.builder(
         itemCount: planing.length,
         physics: const NeverScrollableScrollPhysics(),
