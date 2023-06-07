@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vertical_tab_bar_view/vertical_tab_bar_view.dart';
+//import 'package:vertical_tab_bar_view/vertical_tab_bar_view.dart';
 
 class CoursesTabBar extends StatelessWidget {
   const CoursesTabBar({super.key});

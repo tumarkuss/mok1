@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mok1/data/user_data.dart';
-import 'package:mok1/screens/profile_screen/components/avatar.dart';
+// import 'package:mok1/data/user_data.dart';
+// import 'package:mok1/screens/profile_screen/components/avatar.dart';
 import 'package:mok1/widgets/profile_card.dart';
 
 import '../../components/components.dart';
-import '../../data/data.dart';
+// import '../../data/data.dart';
 
 class ProfileScreen extends StatelessWidget {
    ProfileScreen({super.key});

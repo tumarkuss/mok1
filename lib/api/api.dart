@@ -1,12 +1,13 @@
 import 'dart:convert';
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 ///194.39.65.2 PS.kz server Ipv address
-import 'package:mok1/main.dart';
+// import 'package:mok1/main.dart';
 import 'package:mime_type/mime_type.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
+//https://iportal.mok.kz/intranet/scripts/aslan/mobile/test_tumar.php?username=tumar
 
 Future sendRequest(
     {required String module, required String action, Object? body}) async {
@@ -19,7 +20,7 @@ Future sendRequest(
   };
   final String authToken = prefs.getString('authToken')!;
 
-  final uri = Uri.https('194.39.65.2', '/database/users/users.sql', queryParameters);
+  final uri = Uri.https('iportal.mok.kz', '/intranet/scripts/aslan/mobile/test_tumar.php', queryParameters);
   final response =
       await http.post(uri, body: body, headers: {'token': authToken});
 
@@ -44,11 +45,11 @@ Future<Map<String, dynamic>> sendMDLWSRestServiceRequest(
   };
 
   if (params != null) {
-    params.forEach((k, v) => {queryParameters[k] = v.toString()});
+    params.forEach((k, v) => queryParameters[k] = v.toString());
   }
 
   final uri = Uri.https(
-      'portal.aues.kz', '/webservice/rest/server.php', queryParameters);
+    'iportal.mok.kz', '/intranet/scripts/aslan/mobile/test_tumar.php', queryParameters);
 
   final response = await http.get(uri);
   final body = jsonDecode(response.body);

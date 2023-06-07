@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+// server path https://iportal.mok.kz/intranet/scripts/aslan/mobile/test_tumar.php?username=tumar0
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get_it/get_it.dart';
 import 'package:mok1/screens/home_screen/home_screen.dart';
 
+import '../../api/auth_test.dart';
 import '../../components/constants.dart';
-import '../../components/custom_snackbars.dart';
+// import '../../components/custom_snackbars.dart';
 import '../../components/default_button.dart';
 import '../../components/form_error.dart';
 
@@ -60,7 +61,7 @@ class _SignFormState extends State<SignForm> {
             children: [
               Checkbox(
                 value: remember,
-                activeColor: Color.fromARGB(255, 0, 63, 180),
+                activeColor: const Color.fromARGB(255, 0, 63, 180),
                 onChanged: (value) {
                   setState(() {
                     remember = value!;
@@ -71,6 +72,7 @@ class _SignFormState extends State<SignForm> {
               const Spacer(),
               GestureDetector(
                 onTap: () {
+                  
                  
                 },
                 child: const Text(
@@ -85,7 +87,14 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
             text: "Продолжить",
             press: () async {
-              ///Login Server Function
+              String username = "tumar";
+              final userCheckResponse = await checkuser(username);
+              if (userCheckResponse == 1){
+                print(userCheckResponse);
+              }else{
+                print(userCheckResponse);
+              }
+              
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MainScreen()));
               
             },

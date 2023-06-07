@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mok1/components/components.dart';
+//import 'package:mok1/components/components.dart';
 import 'package:mok1/screens/courses_screen/tabBar.dart';
 
 class CoursesScreen extends StatelessWidget {
