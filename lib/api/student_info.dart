@@ -3,9 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+
+import '../model/student_model.dart';
 //URI : https://iportal.mok.kz/intranet/scripts/aslan/mobile/get_student_info.php?student_id=36
 
-Future<Map<String, dynamic>> checkuser(String student_id) async {
+//Student thisStudent = Student();
+
+
+Future<Map<String, dynamic>> getUserInfo(String student_id) async {
   final prefs = await SharedPreferences.getInstance();
 
   var queryParameters = {

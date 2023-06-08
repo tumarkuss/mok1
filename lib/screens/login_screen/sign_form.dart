@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mok1/api/student_info.dart';
 // server path https://iportal.mok.kz/intranet/scripts/aslan/mobile/test_tumar.php?username=tumar0
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
@@ -88,7 +89,9 @@ class _SignFormState extends State<SignForm> {
             text: "Продолжить",
             press: () async {
               String username = "tumar";
+              int userID = 36;
               final userCheckResponse = await checkuser(username);
+              final userDataCheckResponse = await getUserInfo(userID.toString());
               if (userCheckResponse == 1){
                 print(userCheckResponse);
               }else{
