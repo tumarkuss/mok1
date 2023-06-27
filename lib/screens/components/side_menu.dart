@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 //import 'package:mok1/components/components.dart';
 import 'package:mok1/screens/courses_screen/courses_screen.dart';
+import 'package:mok1/screens/profile_screen/student_info.dart';
 import 'package:mok1/screens/resources_screen/resources_screen.dart';
 import 'package:mok1/screens/courses_screen/settings_screen.dart';
 import 'package:mok1/screens/home_screen/home_screen.dart';
 import 'package:mok1/screens/login_screen/body.dart';
 import 'package:ternav_icons/ternav_icons.dart';
+
+import '../../api/student_info.dart';
 
 //import '../../constant.dart';
 
@@ -32,7 +35,7 @@ class SideMenu extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MainScreen()),
+                MaterialPageRoute(builder: (context) => const CoursesScreen()),
               );
             },
           ),

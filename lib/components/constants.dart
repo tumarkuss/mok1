@@ -10,14 +10,14 @@ const defaultDuration = Duration(milliseconds: 250);
 final RegExp emailValidatorRegExp =
     RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 const String kEmailNullError =
-    "Пожалуйста, введите свой адрес электронной почты";
+    "";
 const String kPhoneNullError = "Пожалуйста, введите свой номер";
 const String kInvalidPhoneError =
     "Пожалуйста, введите корректный номер телефона";
 const String kInvalidEmailError =
-    "Пожалуйста, введите действительный адрес электронной почты";
-const String kPassNullError = "Пожалуйста, введите свой пароль";
-const String kShortPassError = "Пароль слишком короткий";
+    "";
+const String kPassNullError = "";
+const String kShortPassError = "";
 const String kMatchPassError = "Пароли не совпадают";
 const String kNamelNullError = "Пожалуйста, введите свое имя";
 const String kPhoneNumberNullError = "Пожалуйста, введите свой номер телефона";

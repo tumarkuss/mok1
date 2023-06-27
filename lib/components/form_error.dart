@@ -23,18 +23,18 @@ class FormError extends StatelessWidget {
 
   Row formErrorText({required String error}) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SvgPicture.asset(
-          "assets/icons/Error.svg",
-          height: 14,
-          width: 60,
-        ),
-        const SizedBox(
-          width: 20,
-        ),
+        // SvgPicture.asset(
+        //   "assets/icons/Error.svg",
+        //   height: 14,
+        //   width: 40,
+        // ),
+        
         Text(
           error,
-          style: const TextStyle(color: Color.fromARGB(197, 244, 67, 54)),
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontSize: 12,color: Color.fromARGB(197, 244, 67, 54)),
         ),
       ],
     );

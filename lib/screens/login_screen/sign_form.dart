@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mok1/api/student.dart';
 import 'package:mok1/api/student_info.dart';
 // server path https://iportal.mok.kz/intranet/scripts/aslan/mobile/test_tumar.php?username=tumar0
 // import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,12 +7,14 @@ import 'package:mok1/api/student_info.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get_it/get_it.dart';
 import 'package:mok1/screens/home_screen/home_screen.dart';
+import 'package:mok1/screens/login_screen/body.dart';
 
 import '../../api/auth_test.dart';
 import '../../components/constants.dart';
 // import '../../components/custom_snackbars.dart';
 import '../../components/default_button.dart';
 import '../../components/form_error.dart';
+
 
 class SignForm extends StatefulWidget {
   const SignForm({Key? key}) : super(key: key);
@@ -23,12 +26,15 @@ class SignForm extends StatefulWidget {
 class _SignFormState extends State<SignForm> {
   //final FirebaseAuth auth = FirebaseAuth.instance;
   //final CollectionReference users = FirebaseFirestore.instance.collection('users');
+  //late final currentStudent;
   final _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
-  String? email;
+  String? barcode;
   String? password;
   bool remember = true;
   final List<String> errors = [];
+  
+  Future<Student> get currentStudent => fetchStudentbyId('136');
 
   void addError({required String error}) {
     if (!errors.contains(error)) {
@@ -56,52 +62,63 @@ class _SignFormState extends State<SignForm> {
           buildEmailFormField(),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           buildPasswordFormField(),
-          Row(
+          const Row(
             //mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Checkbox(
-                value: remember,
-                activeColor: const Color.fromARGB(255, 0, 63, 180),
-                onChanged: (value) {
-                  setState(() {
-                    remember = value!;
-                  });
-                },
-              ),
-              const Text("Запомнить"),
-              const Spacer(),
-              GestureDetector(
-                onTap: () {
+            crossAxisAlignment: CrossAxisAlignment.start,
+            // children: [
+            //   Checkbox(
+            //     value: remember,
+            //     activeColor: const Color.fromARGB(255, 0, 63, 180),
+            //     onChanged: (value) {
+            //       setState(() {
+            //         remember = value!;
+            //       });
+            //     },
+            //   ),
+            //   const Text("Запомнить"),
+            //   const Spacer(),
+              // GestureDetector(
+              //   onTap: () {
                   
                  
-                },
-                child: const Text(
-                  "Забыли пароль?",
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              )
-            ],
+              //   },
+              //   child: const Text(
+              //     "Забыли пароль?",
+              //     style: TextStyle(decoration: TextDecoration.underline),
+              //   ),
+              // )
+            // ],
           ),
           FormError(errors: errors),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+          SizedBox( height: MediaQuery.of(context).size.height * 0.02),
           DefaultButton(
-            text: "Продолжить",
-            press: () async {
-              String username = "tumar";
-              int userID = 36;
-              final userCheckResponse = await checkuser(username);
-              final userDataCheckResponse = await getUserInfo(userID.toString());
-              if (userCheckResponse == 1){
-                print(userCheckResponse);
-              }else{
-                print(userCheckResponse);
-              }
-              
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MainScreen()));
-              
-            },
+  text: "Продолжить",
+  press: () async {
+    int userID = 345;
+    final userCheckResponse = await checkuser(barcode ?? '');
+
+    if (userCheckResponse.isNotEmpty) {
+      print("__________User Response Not Empty__________");
+      errors.clear();
+      try {
+       Student currentStudent = await fetchStudentbyId(userID.toString());
+        print(currentStudent);
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => MainScreen(student: currentStudent),
           ),
+        );
+      } catch (e) {
+        addError(error: 'Не удалось получить данные студента');
+        print(currentStudent);
+      }
+    } else {
+      addError(error: kInvalidEmailError);
+    }
+  },
+),
+
+
         ],
       ),
     );
@@ -126,12 +143,12 @@ class _SignFormState extends State<SignForm> {
       validator: (value) {
         if (value!.isEmpty) {
           addError(error: kPassNullError);
-          //return "Введите пароль";
+          return "Введите пароль";
         } else if (value.length < 8) {
           addError(error: kShortPassError);
-          //return "Слишком короткий пароль";
+          return "Слишком короткий пароль";
         }
-        return;
+        //return;
       },
       decoration: InputDecoration(
         labelText: "Пароль",
@@ -165,7 +182,7 @@ class _SignFormState extends State<SignForm> {
     return TextFormField(
       controller: emailController,
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
+      onSaved: (newValue) => barcode = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
@@ -187,9 +204,9 @@ class _SignFormState extends State<SignForm> {
         return;
       },
       decoration: InputDecoration(
-        labelText: "Email",
+        labelText: "Имя пользователя",
         contentPadding: const EdgeInsets.fromLTRB(35, 22, 0, 22),
-        hintText: "Введите электронную почту",
+        hintText: "Введите имя пользователя",
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(width: 1, color: Colors.grey),
           borderRadius: BorderRadius.circular(25),

@@ -8,16 +8,23 @@ import 'package:mok1/widgets/planing_grid.dart';
 import 'package:mok1/widgets/statistics_grid.dart';
 import 'package:flutter/material.dart';
 
+import '../../api/student.dart';
+import '../../api/student_info.dart';
 import '../notifications_screen/notifications_screen.dart';
 import '/constant.dart';
 import '/widgets/planing_header.dart';
 import '../components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final Student student;
+
+  MainScreen({Key? key, required this.student}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //Student Data
+    String studentName = student.studentFio;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -66,16 +73,16 @@ class MainScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               RichText(
-                text: const TextSpan(
+                text:  TextSpan(
                   text: "Здравствуйте, ",
-                  style: TextStyle(color: kDarkBlue, fontSize: 20),
+                  style: const TextStyle(color: kDarkBlue, fontSize: 20),
                   children: [
                     TextSpan(
-                      text: "Тумар",
-                      style: TextStyle(
+                      text: studentName,
+                      style: const TextStyle(
                           color: kDarkBlue, fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: "!",
                     ),
                   ],
