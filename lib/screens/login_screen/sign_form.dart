@@ -8,7 +8,6 @@ import 'package:mok1/api/student_info.dart';
 // import 'package:get_it/get_it.dart';
 import 'package:mok1/screens/home_screen/home_screen.dart';
 import 'package:mok1/screens/login_screen/body.dart';
-
 import '../../api/auth_test.dart';
 import '../../components/constants.dart';
 // import '../../components/custom_snackbars.dart';
@@ -24,6 +23,7 @@ class SignForm extends StatefulWidget {
 }
 
 class _SignFormState extends State<SignForm> {
+  Student? currentStudent;
   //final FirebaseAuth auth = FirebaseAuth.instance;
   //final CollectionReference users = FirebaseFirestore.instance.collection('users');
   //late final currentStudent;
@@ -34,7 +34,7 @@ class _SignFormState extends State<SignForm> {
   bool remember = true;
   final List<String> errors = [];
   
-  Future<Student> get currentStudent => fetchStudentbyId('136');
+  //Future<Student> get currentStudent => fetchStudentById('136');
 
   void addError({required String error}) {
     if (!errors.contains(error)) {
@@ -94,22 +94,29 @@ class _SignFormState extends State<SignForm> {
           DefaultButton(
   text: "Продолжить",
   press: () async {
-    int userID = 345;
-    final userCheckResponse = await checkuser(barcode ?? '');
+    final userCheckResponse = await fetchStudentById(barcode.toString());
 
-    if (userCheckResponse.isNotEmpty) {
+    if (userCheckResponse != null) {
       print("__________User Response Not Empty__________");
       errors.clear();
       try {
-       Student currentStudent = await fetchStudentbyId(userID.toString());
+       //var studentId;
+        print(currentStudent);
+        print(currentStudent);
+        print(currentStudent);
+        print(currentStudent);
         print(currentStudent);
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
-            builder: (context) => MainScreen(student: currentStudent),
+            builder: (context) => MainScreen( student: currentStudent!), //Current student
           ),
         );
       } catch (e) {
         addError(error: 'Не удалось получить данные студента');
+        print(currentStudent);
+        print(currentStudent);
+        print(currentStudent);
+        print(currentStudent);
         print(currentStudent);
       }
     } else {
